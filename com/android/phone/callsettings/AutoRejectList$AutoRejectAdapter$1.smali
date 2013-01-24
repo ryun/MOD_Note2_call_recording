@@ -1,0 +1,177 @@
+.class Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;
+.super Ljava/lang/Object;
+.source "AutoRejectList.java"
+
+# interfaces
+.implements Landroid/view/View$OnClickListener;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter;->drawNormalScreen(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
+# instance fields
+.field final synthetic this$1:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter;
+
+.field final synthetic val$item:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;
+
+
+# direct methods
+.method constructor <init>(Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter;Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;)V
+    .registers 3
+    .parameter
+    .parameter
+
+    .prologue
+    .line 916
+    iput-object p1, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->this$1:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter;
+
+    iput-object p2, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->val$item:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;
+
+    invoke-direct/range {p0 .. p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public onClick(Landroid/view/View;)V
+    .registers 7
+    .parameter "v"
+
+    .prologue
+    const/4 v3, 0x1
+
+    const/4 v2, 0x0
+
+    .line 919
+    iget-object v1, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->this$1:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter;
+
+    iget-object v1, v1, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter;->this$0:Lcom/android/phone/callsettings/AutoRejectList;
+
+    #getter for: Lcom/android/phone/callsettings/AutoRejectList;->mScreenType:I
+    invoke-static {v1}, Lcom/android/phone/callsettings/AutoRejectList;->access$1000(Lcom/android/phone/callsettings/AutoRejectList;)I
+
+    move-result v1
+
+    if-nez v1, :cond_43
+
+    .line 920
+    iget-object v4, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->val$item:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;
+
+    iget-object v1, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->val$item:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;
+
+    iget v1, v1, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;->checked:I
+
+    if-lez v1, :cond_44
+
+    move v1, v2
+
+    :goto_15
+    iput v1, v4, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;->checked:I
+
+    .line 921
+    const v1, 0x7f09002a
+
+    invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/widget/CheckBox;
+
+    move-object v0, v1
+
+    check-cast v0, Landroid/widget/CheckBox;
+
+    .line 923
+    .local v0, checkbox:Landroid/widget/CheckBox;
+    iget-object v1, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->val$item:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;
+
+    iget v1, v1, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;->checked:I
+
+    if-eqz v1, :cond_46
+
+    :goto_29
+    invoke-virtual {v0, v3}, Landroid/widget/CheckBox;->setChecked(Z)V
+
+    .line 924
+    iget-object v1, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->val$item:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;
+
+    iget-object v1, v1, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;->id:Ljava/lang/String;
+
+    if-nez v1, :cond_48
+
+    .line 925
+    iget-object v1, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->this$1:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter;
+
+    iget-object v1, v1, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter;->this$0:Lcom/android/phone/callsettings/AutoRejectList;
+
+    invoke-virtual {v1}, Lcom/android/phone/callsettings/AutoRejectList;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v1
+
+    const-string v2, "unknown_mode"
+
+    iget-object v3, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->val$item:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;
+
+    iget v3, v3, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;->checked:I
+
+    invoke-static {v1, v2, v3}, Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
+
+    .line 933
+    .end local v0           #checkbox:Landroid/widget/CheckBox;
+    :cond_43
+    :goto_43
+    return-void
+
+    :cond_44
+    move v1, v3
+
+    .line 920
+    goto :goto_15
+
+    .restart local v0       #checkbox:Landroid/widget/CheckBox;
+    :cond_46
+    move v3, v2
+
+    .line 923
+    goto :goto_29
+
+    .line 929
+    :cond_48
+    iget-object v1, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->this$1:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter;
+
+    iget-object v1, v1, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter;->this$0:Lcom/android/phone/callsettings/AutoRejectList;
+
+    iget-object v2, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->val$item:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;
+
+    iget-object v2, v2, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;->reject_num:Ljava/lang/String;
+
+    iget-object v3, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->val$item:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;
+
+    iget v3, v3, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;->checked:I
+
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    iget-object v4, p0, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectAdapter$1;->val$item:Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;
+
+    iget-object v4, v4, Lcom/android/phone/callsettings/AutoRejectList$AutoRejectItem;->id:Ljava/lang/String;
+
+    invoke-static {v4}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v4
+
+    #calls: Lcom/android/phone/callsettings/AutoRejectList;->updateAutoRejectNumber(Ljava/lang/String;Ljava/lang/Integer;I)V
+    invoke-static {v1, v2, v3, v4}, Lcom/android/phone/callsettings/AutoRejectList;->access$1900(Lcom/android/phone/callsettings/AutoRejectList;Ljava/lang/String;Ljava/lang/Integer;I)V
+
+    goto :goto_43
+.end method
